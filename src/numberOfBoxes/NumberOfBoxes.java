@@ -7,15 +7,15 @@ public class NumberOfBoxes {
 		IntWrapper lastBox = new IntWrapper(0);
 		IntWrapper minBoxes = new IntWrapper(itemSizes.length);
 		
-		calculateItemBoxes(0, itemSizes, boxes,  lastBox, minBoxes, boxSize);
+		calculateNumberOfBoxes(0, itemSizes, boxes,  lastBox, minBoxes, boxSize);
 		
 //		int[] itemBoxes = new int[itemSizes.length];
-//		calculateItemBoxes(0, itemSizes, itemBoxes, boxes,  lastBox, minBoxes, boxSize);
-		
+//		calculateBoxOfEachItem(0, itemSizes, itemBoxes, boxes,  lastBox, minBoxes, boxSize);
+//		
 		return minBoxes.getValue();
 	}
 	
-	private void calculateItemBoxes(int n, int[] itemSizes, int[] boxes, IntWrapper lastBox, IntWrapper minBoxes, int boxSize) {
+	private void calculateNumberOfBoxes(int n, int[] itemSizes, int[] boxes, IntWrapper lastBox, IntWrapper minBoxes, int boxSize) {
 		if(n == itemSizes.length) {
 			if(lastBox.getValue() < minBoxes.getValue())
 				minBoxes.setValue(lastBox.getValue());
@@ -28,7 +28,7 @@ public class NumberOfBoxes {
 					boxes[i] += itemSizes[n];
 					if(i+1 > lastBox.getValue())
 						lastBox.setValue(i+1);
-					calculateItemBoxes(n+1, itemSizes, boxes, lastBox, minBoxes, boxSize);
+					calculateNumberOfBoxes(n+1, itemSizes, boxes, lastBox, minBoxes, boxSize);
 				}
 			}
 		}
@@ -36,7 +36,7 @@ public class NumberOfBoxes {
 	
 	
 	/*this method also gets the box that stores each item*/
-	private void calculateItemBoxes(int n, int[] itemSizes, int[] itemBoxes, int[] boxes, IntWrapper lastBox, IntWrapper minBoxes, int boxSize) {
+	private void calculateBoxOfEachItem(int n, int[] itemSizes, int[] itemBoxes, int[] boxes, IntWrapper lastBox, IntWrapper minBoxes, int boxSize) {
 		if(n == itemBoxes.length) {
 			if(lastBox.getValue() < minBoxes.getValue())
 				minBoxes.setValue(lastBox.getValue());
@@ -50,7 +50,7 @@ public class NumberOfBoxes {
 					itemBoxes[n] = i+1;
 					if(i+1 > lastBox.getValue())
 						lastBox.setValue(i+1);
-					calculateItemBoxes(n+1, itemSizes, itemBoxes, boxes, lastBox, minBoxes, boxSize);
+					calculateBoxOfEachItem(n+1, itemSizes, itemBoxes, boxes, lastBox, minBoxes, boxSize);
 				}
 			}
 		}
