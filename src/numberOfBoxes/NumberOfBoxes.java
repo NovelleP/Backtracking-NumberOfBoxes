@@ -1,9 +1,5 @@
 package numberOfBoxes;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-
 public class NumberOfBoxes {
 	
 	public int[] getNumberOfBoxes(int[] itemSizes, int boxSize) {
