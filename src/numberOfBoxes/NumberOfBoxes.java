@@ -20,8 +20,8 @@ public class NumberOfBoxes {
 
 	private void calculateBoxOfEachItem(int n, int[] itemSizes, int[] itemBoxes, int[] boxes, IntWrapper lastBox, IntWrapper minBoxes, int boxSize, int[] bestItemBoxes) {
 		if(n == itemBoxes.length) {				
-			if(lastBox.getValue() < minBoxes.getValue()) {
-				minBoxes.setValue(lastBox.getValue());
+			if((lastBox.getValue()+1) < minBoxes.getValue()) {
+				minBoxes.setValue(lastBox.getValue()+1);
 				copyArray(itemBoxes, bestItemBoxes);				
 			}
 		}		
